@@ -1,0 +1,11 @@
+<form>
+  <label>User Name: </label>
+  <input class='inp' name="user" [(ngModel)]="currentUser.username" type='text'>
+  <label>E-mail: </label>
+  <input class='inp' name="ema"  [(ngModel)]="currentUser.email" type='text'>
+  <label>Password: </label>
+  <input class='inp' name="pass"  [(ngModel)]="currentUser.password" type='password'>
+  <label>Password again: </label>
+  <input class='inp' name="passag"  type='password'>
+  <button routerLink="/main" class='but' (click)="registration()" >Registration</button>
+</form>

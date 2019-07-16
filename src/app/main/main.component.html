@@ -1,0 +1,39 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+<div class='sidemenu'>
+    <h2 class="sidemenutitle">Trending games</h2>
+  <div class='sidemenugrid'>
+    <p class='trendings' id='lol' (click)="changefilter('League of Legends')">League of Legends</p>
+    <p class='trendings' (click)="changefilter('CS:GO')">CS:GO</p>
+    <p class='trendings' (click)="changefilter('Fortnite')">Fortnite</p>
+    <p  class='trendings'(click)="changefilter('PUBG')">PUBG</p>
+  </div>
+</div>
+<div class='back'>
+  <div class='formdiv'>
+    <div class='photodiv'>
+    <label class='lab' id='photolb' for='upload-photo'>Add Photo</label>
+    <input type="file" id="upload-photo" class='fileinput' (change)="onUploadChange($event)" accept=".png, .jpg, .jpeg, .pdf" />
+    </div>
+    <form id="add-post" class='add-post'>
+      <textarea id='textare' placeholder="Post something.." class='input' type="text" [(ngModel)]="post.content" name="continp"></textarea>
+      <button class='but' (click)="fbPostData()">Post</button>
+    </form>
+    <select class='gameselect' [(ngModel)]="post.game">
+        <option value="League of Legends">League of Legends</option>
+        <option value="CS:GO">CS:GO</option>
+        <option value="Fortnite">Fortnite</option>
+        <option value="PUBG">PUBG</option>
+      </select>
+  </div>
+
+  <ul class='postlist'>
+    <div class='postdiv' *ngFor="let post2 of posts | game:filterargs">
+      <h2 class='content'>{{post2.content}}</h2>
+      <img class='postimg' src={{post2.image}} alt="" id="img">
+      <h5 class='title'>{{post2.poster}}</h5>
+      <h5 class='game'>{{post2.game}}</h5>
+      <h5 class='date'>{{post2.date}}</h5>
+    </div>
+  </ul>
+</div>
